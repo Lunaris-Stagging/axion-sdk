@@ -1,0 +1,45 @@
+package {
+    default_applicable_licenses: ["lunaris_water_ripple_license"],
+    default_visibility: ["//visibility:public"],
+}
+
+license {
+    name: "lunaris_water_ripple_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["legacy_restricted"],
+    license_text: ["LICENSE", "NOTICE"],
+}
+
+android_library {
+    name: "lunaris_water_ripple",
+    manifest: "AndroidManifest.xml",
+    srcs: ["src/**/*.java"],
+    resource_dirs: ["res"],
+    platform_apis: true,
+    use_resource_processor: true,
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+}
+
+cc_library_shared {
+    name: "liblunaris_water_ripple",
+    srcs: [
+        "native/ripple_core.c",
+        "native/ripple_gles_shaders.c",
+        "native/ripple_gles_pipeline.c",
+        "native/ripple_gles_overlay_shader.c",
+        "native/ripple_gles_overlay.c",
+        "native/unlock_ripple.c",
+        "native/unlock_watercolor.c",
+        "native/watercolor_refresh.c",
+        "native/water_ripple_jni.c",
+    ],
+    local_include_dirs: ["native"],
+    header_libs: ["jni_headers"],
+    c_std: "c11",
+    cflags: ["-Wall", "-Wextra", "-Werror", "-fno-fast-math", "-ffp-contract=off"],
+    shared_libs: ["libandroid", "libEGL", "libGLESv2", "libjnigraphics", "liblog", "libm"],
+    stl: "none",
+    system_ext_specific: true,
+}
