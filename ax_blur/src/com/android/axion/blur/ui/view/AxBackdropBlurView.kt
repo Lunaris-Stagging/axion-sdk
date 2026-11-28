@@ -339,6 +339,13 @@ class AxBackdropBlurRenderer @JvmOverloads constructor(
                 cornerWidthScale = array.getFloat(R.styleable.AxBackdropBlurLayout_axBackdropBlurRimCornerWidthScale, defaults.cornerWidthScale),
                 cornerAlphaScale = array.getFloat(R.styleable.AxBackdropBlurLayout_axBackdropBlurRimCornerAlphaScale, defaults.cornerAlphaScale),
                 cornerTaperPower = array.getFloat(R.styleable.AxBackdropBlurLayout_axBackdropBlurRimCornerTaperPower, defaults.cornerTaperPower),
+                style = array.getInt(R.styleable.AxBackdropBlurLayout_axBackdropBlurRimStyle, defaults.style),
+                lightAngleDeg = array.getFloat(R.styleable.AxBackdropBlurLayout_axBackdropBlurRimLightAngle, defaults.lightAngleDeg),
+                lightIntensity = array.getFloat(R.styleable.AxBackdropBlurLayout_axBackdropBlurRimLightIntensity, defaults.lightIntensity),
+                oppositeLightIntensity = array.getFloat(R.styleable.AxBackdropBlurLayout_axBackdropBlurRimOppositeIntensity, defaults.oppositeLightIntensity),
+                lightAngleRange = array.getFloat(R.styleable.AxBackdropBlurLayout_axBackdropBlurRimLightAngleRange, defaults.lightAngleRange),
+                glassEdgeWidthDp = array.getDimension(R.styleable.AxBackdropBlurLayout_axBackdropBlurRimGlassEdgeWidth, defaults.glassEdgeWidthDp * density) / density,
+                glassEdgePower = array.getFloat(R.styleable.AxBackdropBlurLayout_axBackdropBlurRimGlassEdgePower, defaults.glassEdgePower),
             )
             if (array.hasValue(R.styleable.AxBackdropBlurLayout_axBackdropBlurTint)) {
                 backdropTintColor = array.getColor(

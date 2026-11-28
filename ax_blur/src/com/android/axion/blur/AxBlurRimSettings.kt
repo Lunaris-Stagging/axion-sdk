@@ -31,6 +31,13 @@ private object AxBlurRimSettings {
                     cornerWidthScale = value.cornerWidthScale,
                     cornerAlphaScale = value.cornerAlphaScale,
                     cornerTaperPower = value.cornerTaperPower,
+                    style = value.style,
+                    lightAngleDeg = value.lightAngleDeg,
+                    lightIntensity = value.lightIntensity,
+                    oppositeLightIntensity = value.oppositeLightIntensity,
+                    lightAngleRange = value.lightAngleRange,
+                    glassEdgeWidthDp = value.glassEdgeWidthDp,
+                    glassEdgePower = value.glassEdgePower,
                 )
             config = value
         }

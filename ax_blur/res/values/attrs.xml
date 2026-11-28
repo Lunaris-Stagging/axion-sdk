@@ -19,5 +19,12 @@
         <attr name="axBackdropBlurRimCornerWidthScale" format="float" />
         <attr name="axBackdropBlurRimCornerAlphaScale" format="float" />
         <attr name="axBackdropBlurRimCornerTaperPower" format="float" />
+        <attr name="axBackdropBlurRimStyle" format="integer" />
+        <attr name="axBackdropBlurRimLightAngle" format="float" />
+        <attr name="axBackdropBlurRimLightIntensity" format="float" />
+        <attr name="axBackdropBlurRimOppositeIntensity" format="float" />
+        <attr name="axBackdropBlurRimLightAngleRange" format="float" />
+        <attr name="axBackdropBlurRimGlassEdgeWidth" format="dimension" />
+        <attr name="axBackdropBlurRimGlassEdgePower" format="float" />
     </declare-styleable>
 </resources>

@@ -47,6 +47,13 @@ constructor(
     val cornerWidthScale: Float = 1f,
     val cornerAlphaScale: Float = 0.8f,
     val cornerTaperPower: Float = 6.8f,
+    val style: Int = STYLE_CLASSIC,
+    val lightAngleDeg: Float = 131f,
+    val lightIntensity: Float = 1.8f,
+    val oppositeLightIntensity: Float = 1.2f,
+    val lightAngleRange: Float = 0.7f,
+    val glassEdgeWidthDp: Float = 8.0f,
+    val glassEdgePower: Float = 3.0f,
 ) {
     init {
         for (value in
@@ -70,13 +77,38 @@ constructor(
         require(cornerTaperPower.isFinite() && cornerTaperPower > 0f) {
             "Rim corner taper power must be positive"
         }
+        require(style == STYLE_CLASSIC || style == STYLE_DIRECTIONAL_GLASS) {
+            "Unsupported rim style: $style"
+        }
+        require(lightAngleDeg.isFinite()) { "Rim light angle must be finite" }
+        require(lightIntensity.isFinite() && lightIntensity >= 0f) {
+            "Rim light intensity must be nonnegative"
+        }
+        require(oppositeLightIntensity.isFinite() && oppositeLightIntensity >= 0f) {
+            "Rim opposite light intensity must be nonnegative"
+        }
+        require(lightAngleRange.isFinite() && lightAngleRange in 0.05f..1f) {
+            "Rim light angle range must be in 0.05..1"
+        }
+        require(glassEdgeWidthDp.isFinite() && glassEdgeWidthDp > 0f) {
+            "Rim glass edge width must be positive"
+        }
+        require(glassEdgePower.isFinite() && glassEdgePower > 0f) {
+            "Rim glass edge power must be positive"
+        }
     }
 
     companion object {
+        const val STYLE_CLASSIC = 0
+        const val STYLE_DIRECTIONAL_GLASS = 1
+
         /** Existing surfaces keep their current appearance until explicitly enabled. */
         @JvmField val None = AxBlurRim(enabled = false)
 
         /** Starting preset based on the subtle top rim and brighter bottom notification rim. */
         @JvmField val ColorOS = AxBlurRim()
+
+        /** HyperOS-inspired 3D directional specular frosted glass rim shader preset. */
+        @JvmField val DirectionalGlass = AxBlurRim(style = STYLE_DIRECTIONAL_GLASS)
     }
 }
